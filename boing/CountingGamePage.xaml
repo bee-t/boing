@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="boing.CountingGamePage"
+             Title="Counting Time"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}">
+
+    <Grid BackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}">
+        <AbsoluteLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+            <BoxView x:Name="GameBg1" Color="#FFE66D" Opacity="0.45" 
+                     CornerRadius="150" WidthRequest="300" HeightRequest="300"
+                     AbsoluteLayout.LayoutBounds="0.6, -0.05, 300, 300" AbsoluteLayout.LayoutFlags="None" />
+            <BoxView x:Name="GameBg2" Color="#F8B4D9" Opacity="0.4" 
+                     CornerRadius="120" WidthRequest="250" HeightRequest="250"
+                     AbsoluteLayout.LayoutBounds="-0.05, 0.5, 250, 250" AbsoluteLayout.LayoutFlags="None" />
+            <BoxView x:Name="GameBg3" Color="#4ECDC4" Opacity="0.35" 
+                     CornerRadius="100" WidthRequest="200" HeightRequest="200"
+                     AbsoluteLayout.LayoutBounds="0.1, 0.8, 200, 200" AbsoluteLayout.LayoutFlags="None" />
+            <BoxView x:Name="GameBg4" Color="#AA96DA" Opacity="0.3" 
+                     CornerRadius="80" WidthRequest="170" HeightRequest="170"
+                     AbsoluteLayout.LayoutBounds="0.72, 0.32, 170, 170" AbsoluteLayout.LayoutFlags="None" />
+        </AbsoluteLayout>
+
+        <VerticalStackLayout Padding="24" Spacing="16">
+            <Button x:Name="BackBtn" Text="← Back" Clicked="OnBackClicked" 
+                    HorizontalOptions="Start" BackgroundColor="Transparent" 
+                    TextColor="{AppThemeBinding Light={StaticResource AccentLight}, Dark={StaticResource AccentDark}}"
+                    FontSize="17" FontAttributes="Bold" />
+
+            <Label Text="Tap the star to add one. How many?" FontSize="18" 
+                   TextColor="{AppThemeBinding Light={StaticResource SecondaryTextLight}, Dark={StaticResource SecondaryTextDark}}"
+                   HorizontalOptions="Center" Margin="0,8,0,0" />
+
+            <Frame CornerRadius="24" HasShadow="True" Padding="16" HorizontalOptions="Center"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource CardBackgroundLight}, Dark={StaticResource CardBackgroundDark}}"
+                   BorderColor="{AppThemeBinding Light={StaticResource CardBorderLight}, Dark={StaticResource CardBorderDark}}"
+                   Margin="0,8,0,0">
+                <Frame.Shadow><Shadow Brush="{AppThemeBinding Light={StaticResource ShadowBrushLightBrush}, Dark={StaticResource ShadowBrushDarkBrush}}" Offset="0,4" Radius="12" Opacity="0.12"/></Frame.Shadow>
+                <Label x:Name="CountLabel" Text="0" FontSize="48" FontAttributes="Bold" 
+                       HorizontalOptions="Center"
+                       TextColor="{AppThemeBinding Light={StaticResource PrimaryTextLight}, Dark={StaticResource PrimaryTextDark}}" />
+            </Frame>
+
+            <!-- Star button: violet background so yellow star is clearly visible (not washed) -->
+            <Frame x:Name="StarTapArea" CornerRadius="28" HasShadow="True" Padding="24"
+                   WidthRequest="140" HeightRequest="140" HorizontalOptions="Center"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource StarButtonBackgroundLight}, Dark={StaticResource StarButtonBackgroundDark}}"
+                   BorderColor="{AppThemeBinding Light={StaticResource CardBorderLight}, Dark={StaticResource CardBorderDark}}"
+                   Margin="0,20,0,0">
+                <Frame.Shadow><Shadow Brush="{AppThemeBinding Light={StaticResource ShadowBrushLightBrush}, Dark={StaticResource ShadowBrushDarkBrush}}" Offset="0,6" Radius="14" Opacity="0.15"/></Frame.Shadow>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnStarTapped" NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
+                <Label x:Name="StarLabel" Text="⭐" FontSize="64" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Frame>
+
+            <Label Text="Tap to count!" FontSize="14" 
+                   TextColor="{AppThemeBinding Light={StaticResource SecondaryTextLight}, Dark={StaticResource SecondaryTextDark}}"
+                   HorizontalOptions="Center" Margin="0,8,0,0" />
+
+            <Button x:Name="ResetBtn" Text="Start over" Clicked="OnResetClicked" 
+                    HorizontalOptions="Center" BackgroundColor="Transparent" 
+                    TextColor="{AppThemeBinding Light={StaticResource AccentLight}, Dark={StaticResource AccentDark}}"
+                    FontAttributes="Bold" Margin="0,16,0,0" />
+        </VerticalStackLayout>
+
+        <Label x:Name="CelebrationLabel" Text="🎉 Great job!" FontSize="28" FontAttributes="Bold" 
+               TextColor="{AppThemeBinding Light={StaticResource PrimaryTextLight}, Dark={StaticResource PrimaryTextDark}}"
+               HorizontalOptions="Center" VerticalOptions="Center"
+               IsVisible="False" Opacity="0" />
+    </Grid>
+
+</ContentPage>

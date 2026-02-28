@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="boing.ShapesGamePage"
+             Title="Shapes &amp; Colors"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}">
+
+    <Grid BackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}">
+        <AbsoluteLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+            <BoxView x:Name="GameBg1" Color="#4ECDC4" Opacity="0.45" 
+                     CornerRadius="150" WidthRequest="300" HeightRequest="300"
+                     AbsoluteLayout.LayoutBounds="0.7, 0, 300, 300" AbsoluteLayout.LayoutFlags="None" />
+            <BoxView x:Name="GameBg2" Color="#FF6B6B" Opacity="0.38" 
+                     CornerRadius="120" WidthRequest="250" HeightRequest="250"
+                     AbsoluteLayout.LayoutBounds="0, 0.55, 250, 250" AbsoluteLayout.LayoutFlags="None" />
+            <BoxView x:Name="GameBg3" Color="#AA96DA" Opacity="0.35" 
+                     CornerRadius="100" WidthRequest="200" HeightRequest="200"
+                     AbsoluteLayout.LayoutBounds="0.05, 0.82, 200, 200" AbsoluteLayout.LayoutFlags="None" />
+            <BoxView x:Name="GameBg4" Color="#FFE66D" Opacity="0.3" 
+                     CornerRadius="80" WidthRequest="170" HeightRequest="170"
+                     AbsoluteLayout.LayoutBounds="0.75, 0.4, 170, 170" AbsoluteLayout.LayoutFlags="None" />
+        </AbsoluteLayout>
+
+        <VerticalStackLayout Padding="24" Spacing="18">
+            <Button x:Name="BackBtn" Text="← Back" Clicked="OnBackClicked" 
+                    HorizontalOptions="Start" BackgroundColor="Transparent" 
+                    TextColor="{AppThemeBinding Light={StaticResource AccentLight}, Dark={StaticResource AccentDark}}"
+                    FontSize="17" FontAttributes="Bold" />
+
+            <Label Text="Tap the circle that matches this color" FontSize="18" 
+                   TextColor="{AppThemeBinding Light={StaticResource SecondaryTextLight}, Dark={StaticResource SecondaryTextDark}}"
+                   HorizontalOptions="Center" Margin="0,8,0,0" />
+
+            <Frame x:Name="TargetFrame" CornerRadius="999" HasShadow="True" 
+                   WidthRequest="100" HeightRequest="100" HorizontalOptions="Center"
+                   Padding="0" Margin="0,12,0,0" BackgroundColor="Transparent"
+                   BorderColor="{AppThemeBinding Light={StaticResource CardBorderLight}, Dark={StaticResource CardBorderDark}}">
+                <Frame.Shadow><Shadow Brush="{AppThemeBinding Light={StaticResource ShadowBrushLightBrush}, Dark={StaticResource ShadowBrushDarkBrush}}" Offset="0,4" Radius="10" Opacity="0.12"/></Frame.Shadow>
+                <BoxView x:Name="TargetShape" Color="#FF9A3C" CornerRadius="999" 
+                         WidthRequest="100" HeightRequest="100" />
+            </Frame>
+
+            <Grid x:Name="OptionsGrid" ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" 
+                  ColumnSpacing="20" RowSpacing="20" Margin="0,24,0,0">
+                <Frame x:Name="Opt0" Grid.Row="0" Grid.Column="0" Padding="0" CornerRadius="999" 
+                       HasShadow="True" WidthRequest="90" HeightRequest="90" 
+                       BackgroundColor="Transparent" BorderColor="{AppThemeBinding Light={StaticResource CardBorderLight}, Dark={StaticResource CardBorderDark}}">
+                    <Frame.Shadow><Shadow Brush="{AppThemeBinding Light={StaticResource ShadowBrushLightBrush}, Dark={StaticResource ShadowBrushDarkBrush}}" Offset="0,4" Radius="8" Opacity="0.1"/></Frame.Shadow>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnOptionTapped" />
+                    </Frame.GestureRecognizers>
+                    <BoxView x:Name="Opt0Box" Color="#4CAF50" CornerRadius="999" 
+                             WidthRequest="90" HeightRequest="90" />
+                </Frame>
+                <Frame x:Name="Opt1" Grid.Row="0" Grid.Column="1" Padding="0" CornerRadius="999" 
+                       HasShadow="True" WidthRequest="90" HeightRequest="90" 
+                       BackgroundColor="Transparent" BorderColor="{AppThemeBinding Light={StaticResource CardBorderLight}, Dark={StaticResource CardBorderDark}}">
+                    <Frame.Shadow><Shadow Brush="{AppThemeBinding Light={StaticResource ShadowBrushLightBrush}, Dark={StaticResource ShadowBrushDarkBrush}}" Offset="0,4" Radius="8" Opacity="0.1"/></Frame.Shadow>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnOptionTapped" />
+                    </Frame.GestureRecognizers>
+                    <BoxView x:Name="Opt1Box" Color="#2196F3" CornerRadius="999" 
+                             WidthRequest="90" HeightRequest="90" />
+                </Frame>
+                <Frame x:Name="Opt2" Grid.Row="1" Grid.Column="0" Padding="0" CornerRadius="999" 
+                       HasShadow="True" WidthRequest="90" HeightRequest="90" 
+                       BackgroundColor="Transparent" BorderColor="{AppThemeBinding Light={StaticResource CardBorderLight}, Dark={StaticResource CardBorderDark}}">
+                    <Frame.Shadow><Shadow Brush="{AppThemeBinding Light={StaticResource ShadowBrushLightBrush}, Dark={StaticResource ShadowBrushDarkBrush}}" Offset="0,4" Radius="8" Opacity="0.1"/></Frame.Shadow>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnOptionTapped" />
+                    </Frame.GestureRecognizers>
+                    <BoxView x:Name="Opt2Box" Color="#FF5722" CornerRadius="999" 
+                             WidthRequest="90" HeightRequest="90" />
+                </Frame>
+                <Frame x:Name="Opt3" Grid.Row="1" Grid.Column="1" Padding="0" CornerRadius="999" 
+                       HasShadow="True" WidthRequest="90" HeightRequest="90" 
+                       BackgroundColor="Transparent" BorderColor="{AppThemeBinding Light={StaticResource CardBorderLight}, Dark={StaticResource CardBorderDark}}">
+                    <Frame.Shadow><Shadow Brush="{AppThemeBinding Light={StaticResource ShadowBrushLightBrush}, Dark={StaticResource ShadowBrushDarkBrush}}" Offset="0,4" Radius="8" Opacity="0.1"/></Frame.Shadow>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnOptionTapped" />
+                    </Frame.GestureRecognizers>
+                    <BoxView x:Name="Opt3Box" Color="#9C27B0" CornerRadius="999" 
+                             WidthRequest="90" HeightRequest="90" />
+                </Frame>
+            </Grid>
+
+            <Label x:Name="ScoreLabel" Text="Score: 0" FontSize="16" 
+                   TextColor="{AppThemeBinding Light={StaticResource SecondaryTextLight}, Dark={StaticResource SecondaryTextDark}}"
+                   HorizontalOptions="Center" Margin="0,20,0,0" />
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>

@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace boing
 {
@@ -7,6 +7,8 @@ namespace boing
         public App()
         {
             InitializeComponent();
+            // Use system light/dark theme (default when UserAppTheme is Unspecified)
+            Application.Current!.UserAppTheme = AppTheme.Unspecified;
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

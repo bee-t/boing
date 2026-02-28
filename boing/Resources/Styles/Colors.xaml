@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
@@ -26,6 +26,47 @@
     <Color x:Key="Gray600">#404040</Color>
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
+
+    <!-- Kid-friendly accent colors for games and backgrounds -->
+    <Color x:Key="KidsCoral">#FF6B6B</Color>
+    <Color x:Key="KidsMint">#4ECDC4</Color>
+    <Color x:Key="KidsSunny">#FFE66D</Color>
+    <Color x:Key="KidsLavender">#95E1D3</Color>
+    <Color x:Key="KidsPeach">#F38181</Color>
+    <Color x:Key="KidsSky">#AA96DA</Color>
+    <Color x:Key="KidsGrass">#7BC74D</Color>
+    <Color x:Key="KidsOrange">#FF9A3C</Color>
+    <Color x:Key="KidsPink">#F8B4D9</Color>
+    <Color x:Key="KidsBlue">#6C9BCF</Color>
+
+    <!-- Theme-aware UI colors (use with AppThemeBinding) -->
+    <!-- Light theme: stronger contrast so cards/buttons don't look washed -->
+    <Color x:Key="PageBackgroundLight">#E2E6F0</Color>
+    <Color x:Key="CardBackgroundLight">#FFFFFF</Color>
+    <Color x:Key="CardBorderLight">#D0D6E4</Color>
+    <Color x:Key="PrimaryTextLight">#1a1a2e</Color>
+    <Color x:Key="SecondaryTextLight">#4a4a6a</Color>
+    <Color x:Key="AccentLight">#512BD4</Color>
+    <Color x:Key="AccentMutedLight">#1A512BD4</Color>
+    <Color x:Key="HeroCardBackgroundLight">#FFFFFF</Color>
+    <!-- Star button: violet tint so yellow star emoji is visible -->
+    <Color x:Key="StarButtonBackgroundLight">#D4C8F0</Color>
+    <Color x:Key="ShadowBrushLight">#30000000</Color>
+
+    <!-- Dark theme -->
+    <Color x:Key="PageBackgroundDark">#1a1a2e</Color>
+    <Color x:Key="CardBackgroundDark">#2d2d3a</Color>
+    <Color x:Key="CardBorderDark">#3d3d4a</Color>
+    <Color x:Key="PrimaryTextDark">#f0f0f8</Color>
+    <Color x:Key="SecondaryTextDark">#a8a8c0</Color>
+    <Color x:Key="AccentDark">#a78bfa</Color>
+    <Color x:Key="AccentMutedDark">#40a78bfa</Color>
+    <Color x:Key="HeroCardBackgroundDark">#2d2d3a</Color>
+    <Color x:Key="StarButtonBackgroundDark">#5C4F7B</Color>
+    <Color x:Key="ShadowBrushDark">#40000000</Color>
+
+    <SolidColorBrush x:Key="ShadowBrushLightBrush" Color="{StaticResource ShadowBrushLight}"/>
+    <SolidColorBrush x:Key="ShadowBrushDarkBrush" Color="{StaticResource ShadowBrushDark}"/>
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>

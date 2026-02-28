@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="boing.GamesPage"
+             Title="Games"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}">
+
+    <Grid BackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}">
+        <AbsoluteLayout x:Name="BgContainer" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="True">
+            <BoxView x:Name="GameBg1" Color="#AA96DA" Opacity="0.5" 
+                     CornerRadius="150" WidthRequest="320" HeightRequest="320"
+                     AbsoluteLayout.LayoutBounds="0.6, -0.05, 320, 320" AbsoluteLayout.LayoutFlags="None" />
+            <BoxView x:Name="GameBg2" Color="#4ECDC4" Opacity="0.45" 
+                     CornerRadius="120" WidthRequest="260" HeightRequest="260"
+                     AbsoluteLayout.LayoutBounds="-0.05, 0.45, 260, 260" AbsoluteLayout.LayoutFlags="None" />
+            <BoxView x:Name="GameBg3" Color="#FFE66D" Opacity="0.4" 
+                     CornerRadius="100" WidthRequest="220" HeightRequest="220"
+                     AbsoluteLayout.LayoutBounds="0.05, 0.78, 220, 220" AbsoluteLayout.LayoutFlags="None" />
+            <BoxView x:Name="GameBg4" Color="#FF6B6B" Opacity="0.35" 
+                     CornerRadius="80" WidthRequest="180" HeightRequest="180"
+                     AbsoluteLayout.LayoutBounds="0.75, 0.35, 180, 180" AbsoluteLayout.LayoutFlags="None" />
+        </AbsoluteLayout>
+
+        <VerticalStackLayout Padding="24" Spacing="20">
+            <Grid Margin="0,8,0,4">
+                <Button x:Name="BackBtn" Text="← Back" Clicked="OnBackClicked" 
+                        HorizontalOptions="Start" BackgroundColor="Transparent" 
+                        TextColor="{AppThemeBinding Light={StaticResource AccentLight}, Dark={StaticResource AccentDark}}"
+                        FontSize="17" FontAttributes="Bold" />
+                <Label Text="Choose a Game" FontSize="26" FontAttributes="Bold" 
+                       TextColor="{AppThemeBinding Light={StaticResource PrimaryTextLight}, Dark={StaticResource PrimaryTextDark}}"
+                       HorizontalOptions="Center" VerticalOptions="Center" />
+            </Grid>
+
+            <Label Text="Tap a game to play! 🎮" FontSize="15" 
+                   TextColor="{AppThemeBinding Light={StaticResource SecondaryTextLight}, Dark={StaticResource SecondaryTextDark}}"
+                   HorizontalOptions="Center" Margin="0,-4,0,8" />
+
+            <CollectionView x:Name="GamesList" SelectionMode="None" 
+                             SelectionChanged="OnSelectionChanged"
+                             Margin="0,4,0,24">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="18" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame x:Name="GameCard" Padding="0" HasShadow="True" 
+                               CornerRadius="24" BorderColor="{AppThemeBinding Light={StaticResource CardBorderLight}, Dark={StaticResource CardBorderDark}}"
+                               Margin="2,4"
+                               BackgroundColor="{AppThemeBinding Light={StaticResource CardBackgroundLight}, Dark={StaticResource CardBackgroundDark}}">
+                            <Frame.Shadow>
+                                <Shadow Brush="{AppThemeBinding Light={StaticResource ShadowBrushLightBrush}, Dark={StaticResource ShadowBrushDarkBrush}}" Offset="0,6" Radius="16" Opacity="0.18"/>
+                            </Frame.Shadow>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnGameTapped" />
+                            </Frame.GestureRecognizers>
+                            <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto" Padding="20,18">
+                                <Frame Grid.Column="0" WidthRequest="64" HeightRequest="64" 
+                                       CornerRadius="18" Padding="0" HasShadow="False"
+                                       VerticalOptions="Center"
+                                       BackgroundColor="{Binding AccentColor}">
+                                    <Label Text="{Binding Emoji}" FontSize="32" 
+                                           HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Frame>
+                                <VerticalStackLayout Grid.Column="1" Spacing="4" 
+                                                     VerticalOptions="Center" Padding="18,0,12,0">
+                                    <Label Text="{Binding Title}" FontAttributes="Bold" 
+                                           FontSize="20" TextColor="{AppThemeBinding Light={StaticResource PrimaryTextLight}, Dark={StaticResource PrimaryTextDark}}" />
+                                    <Label Text="{Binding Subtitle}" FontSize="14" 
+                                           TextColor="{AppThemeBinding Light={StaticResource SecondaryTextLight}, Dark={StaticResource SecondaryTextDark}}" />
+                                </VerticalStackLayout>
+                                <Frame Grid.Column="2" CornerRadius="20" Padding="0" HasShadow="False"
+                                       WidthRequest="40" HeightRequest="40"
+                                       BackgroundColor="{AppThemeBinding Light={StaticResource AccentMutedLight}, Dark={StaticResource AccentMutedDark}}"
+                                       VerticalOptions="Center">
+                                    <Label Text="›" FontSize="22" FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light={StaticResource AccentLight}, Dark={StaticResource AccentDark}}"
+                                           HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
